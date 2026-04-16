@@ -1,4 +1,6 @@
-# MVP Cost Estimation
+# MVP Cost Estimation (Illustrative)
+
+**Audit note:** These numbers are scenario estimates under one example model mix. Vendor pricing and model lineups change quickly, so recompute before implementation.
 
 ## MVP Scope
 
@@ -10,15 +12,17 @@ persona-generator + persona-cloner + simulation-runner + choice-tracker
 
 ---
 
-## LLM Cost Reference (April 2026)
+## Example Model Mix And Price Snapshot
 
 | Model | Input | Output | Notes |
 |-------|-------|--------|-------|
-| **gpt-4o** | $2.50/1M | $10/1M | Main simulation model |
-| **gpt-4o-mini** | $0.15/1M | $0.60/1M | Observer, lighter tasks |
-| **gemini-2.5-flash-lite** | $0.075/1M | $0.30/1M | Persona generation |
-| **mistral-nemo** | $0.20/1M | $0.20/1M | Conversation simulation |
-| **claude-sonnet-4.6** | $3/1M | $15/1M | Premium option |
+| **Example primary model** | variable | variable | Main simulation model |
+| **Example mini model** | variable | variable | Observer, lighter tasks |
+| **Example low-cost generator** | variable | variable | Persona generation |
+| **Example open-weight / budget model** | variable | variable | Conversation simulation |
+| **Example premium option** | variable | variable | Higher-quality fallback |
+
+Use current official pricing pages for the exact model set you deploy.
 
 ---
 
@@ -124,7 +128,7 @@ Total for 100 scenarios: 100 × $0.0025 = $0.25
 | simulation-runner | $2.35 |
 | observer-agent | $0.024 |
 | participant self-rating | $0.25 |
-| **Total** | **$2.62** |
+| **Total** | **~$2.6** |
 
 ---
 
@@ -133,7 +137,7 @@ Total for 100 scenarios: 100 × $0.0025 = $0.25
 | Scenarios | Total Cost | Cost per Scenario |
 |-----------|------------|-------------------|
 | 10 | $0.38 | $0.038 |
-| 100 | $2.62 | $0.026 |
+| 100 | ~$2.6 | ~$0.026 |
 | 500 | $11.52 | $0.023 |
 | 1,000 | $22.62 | $0.023 |
 
@@ -153,7 +157,7 @@ For 1,000 scenarios: $26.00
 + persona generation: $0.002
 + GNWT processing: $0.00
 
-TOTAL: ~$27.00 per pair
+TOTAL: illustrative only; recompute from current pricing before use
 ```
 
 ---
@@ -168,8 +172,8 @@ TOTAL: ~$27.00 per pair
 | Observer | gpt-4o | gpt-4o-mini | -70% |
 | Participant | gpt-4o | gpt-4o-mini | -70% |
 
-**Optimized per scenario:** $0.023 → $0.008
-**1000 scenarios:** $23 → $8
+**Optimized per scenario:** ballpark only
+**1000 scenarios:** recompute from current pricing
 
 ### 2. Batch Processing
 
@@ -197,17 +201,17 @@ Savings per pair: ~$0.001
 | simulation-runner | $2.35 | $0.47 (mistral-nemo) |
 | observer-agent | $0.024 | $0.007 (mini) |
 | participant | $0.25 | $0.08 (mini) |
-| **Total** | **$2.62** | **$0.56** |
+| **Total** | **~$2.6** | **~$0.6** |
 
-**Per scenario:** $0.026 → **$0.0056**
+**Per scenario:** illustrative range only
 
 ---
 
 ## Full Scale Cost (100 pairs, 1000 scenarios each)
 
 ```
-Per pair: 1000 × $0.0056 = $5.60
-100 pairs: 100 × $5.60 = $560
+Per pair: depends on current model mix and transcript length
+100 pairs: recompute from updated assumptions
 ```
 
 ---
@@ -216,9 +220,9 @@ Per pair: 1000 × $0.0056 = $5.60
 
 | Metric | Value |
 |--------|-------|
-| MVP (100 scenarios, 2 pairs) | $0.56 - $2.62 |
-| Research (100 pairs, 1000 scenarios) | $560 - $2,400 |
-| Commercial (10K pairs) | $56,000 - $240,000 |
+| MVP (100 scenarios, 2 pairs) | ballpark, model-dependent |
+| Research (100 pairs, 1000 scenarios) | highly model-dependent |
+| Commercial (10K pairs) | requires fresh pricing and sensitivity analysis |
 
 ---
 
@@ -228,9 +232,9 @@ Per pair: 1000 × $0.0056 = $5.60
 |-----|----------------|-------|----------------|
 | Tinder Gold | $15/mo | 10M subscribers | ~$0.50 |
 | Hinge | $13/mo | 1M subscribers | ~$0.80 |
-| **Our MVP** | — | — | ~$0.01 (with optimization) |
+| **Our MVP** | — | — | illustrative only |
 
-**Insight:** Our simulation-based approach could be cost-competitive if it provides better matching quality.
+**Insight:** A simulation-based approach could be cost-competitive if quality uplift survives pilot validation.
 
 ---
 
@@ -239,7 +243,7 @@ Per pair: 1000 × $0.0056 = $5.60
 1. **Start with gpt-4o-mini** for MVP validation
 2. **Upgrade to gpt-4o** only if quality suffers
 3. **Cache MBTI/Socionics personas** to reduce generation cost
-4. **Target $0.01 per scenario** as baseline
+4. **Set a target cost range only after** measuring real transcript lengths and chosen model prices
 
 ---
 
@@ -302,8 +306,8 @@ Per agent: 1,850 input, 50 output
 
 | MVP Variant | Cost | Scenarios | Per Scenario |
 |------------|------|-----------|--------------|
-| Basic (gpt-4o) | $2.62 | 100 | $0.026 |
-| Optimized (mixed) | $0.56 | 100 | $0.0056 |
-| Minimal (mini only) | $0.15 | 100 | $0.0015 |
+| Basic (example premium mix) | ballpark only | 100 | estimate only |
+| Optimized (example mixed stack) | ballpark only | 100 | estimate only |
+| Minimal (example low-cost stack) | ballpark only | 100 | estimate only |
 
-**Recommended:** Start with $0.56 MVP, optimize after validation.
+**Recommended:** Build a tiny pilot, measure real token usage, then recompute costs from current official pricing.
