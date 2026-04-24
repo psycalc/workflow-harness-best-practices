@@ -3,8 +3,8 @@ title: Plan
 type: concept
 tags: [product, technical, roadmap]
 created: 2026-04-14
-updated: 2026-04-15
-sources: [autoreasearch.md]
+updated: 2026-04-24
+sources: [autoreasearch.md, wiki/concepts/compatibility-level-boundaries.md, wiki/concepts/sociological-compatibility-analogues.md, wiki/concepts/neuroscience-compatibility-bridges.md, wiki/concepts/typology-code-conventions.md, wiki/concepts/weight-calibration.md]
 ---
 
 # Cognitive Matchmaker: Product and Technical Plan
@@ -21,6 +21,45 @@ I would build this as a system of 4 layers:
 4. Action layer — what the user sees: shortlist, explanation, date questions, logistics
 
 Below is the detailed plan.
+
+## 0. Methodology Update — 2026-04-24
+
+This plan remains the product/technical roadmap, but the project methodology has become stricter since the first draft.
+
+Current governing pages:
+
+- [[compatibility-level-boundaries]] — normative boundary between strategic, operational, and tactical compatibility
+- [[sociological-compatibility-analogues]] — sociology as external context and scenario layer
+- [[neuroscience-compatibility-bridges]] — neuroscience as process-level bridge and validation-task inspiration
+- [[typology-code-conventions]] — canonical and localized type-code rules
+- [[weight-calibration]] — scoring weights and aggregation remain open research questions
+
+### Current compatibility ontology
+
+| Level | Primary typology | What it owns | Short question |
+|-------|------------------|--------------|----------------|
+| **Strategic** | Temporistics | temporal worldview, life trajectory, meaning horizon | same road? |
+| **Operational** | Psychosophy | action priorities, pressure, role distribution, execution | can we run life together? |
+| **Tactical** | Socionics | information exchange, situation reading, communication repair | do our interfaces fit? |
+
+Typologies are **not oracles**, but they are now treated as **primary lenses at their own compatibility level**. Cross-system similarities are annotations, not translations.
+
+### Secondary evidence layers
+
+Sociology and neuroscience are not additional typologies.
+
+| Layer | Use | Not allowed |
+|-------|-----|-------------|
+| **Sociology** | social context, moderators, scenario realism, anti-misattribution | treating class/gender/institution as type |
+| **Neuroscience** | cognitive-affective mechanism analogies, stress/fatigue caveats, validation-task design | brain-region/type mapping or neuro-babble |
+
+### Data/code policy
+
+Store typology data as canonical structured values and render display codes by language. Do not rely on ambiguous display strings alone. See [[typology-code-conventions]].
+
+### Unofficial grouping policy
+
+Unofficial groupings, such as Psychosophy sextas/quadras, may support explanation and broad role-fit hints. They should not be treated as original Afanasyev doctrine or as primary scoring inputs unless separately validated.
 
 ---
 
@@ -459,8 +498,20 @@ System collects evidence, not just a form.
 **Step 2. Normalization**
 Responses are cleaned, turned into facts, hypotheses, unknowns.
 
-**Step 3. Typology Feature Extraction**
-Typologies are used as an additional feature dictionary, not as the core of truth.
+**Step 3. Level-Specific Typology Extraction**
+Typologies are used as primary lenses at their own compatibility levels, but not as total truth:
+
+- Temporistics → strategic evidence
+- Psychosophy → operational evidence
+- Socionics → tactical evidence
+
+Each output must include support, contradiction, uncertainty, and confidence. Secondary systems may annotate or flag risks, but must not directly translate constructs across systems.
+
+**Step 3a. Social Context Profiling**
+Sociological variables are collected as external moderators: class, education, labor-market constraints, household labor, gender scripts, migration/war context, family networks, religion/institutions, and local dating-market constraints. These should prevent structural constraints from being misread as personality or type defects.
+
+**Step 3b. Cognitive-Affective Moderator Profiling**
+Neuroscience-informed variables are collected only behaviorally: stress, fatigue, time pressure, ambiguity, emotional escalation, repair capacity, perspective-taking demand, and cognitive load. No brain-type mapping is allowed.
 
 **Step 4. User Twin Build**
 User's digital twin version is assembled.
@@ -487,7 +538,14 @@ For each pair, an individual pack of high-information scenarios is selected.
 Pair is run through many scenarios and repeats.
 
 **Step 10. Judge Ensemble Scoring**
-Judges output layer-by-layer assessment and risks.
+Judges output layer-by-layer assessment and risks. The ensemble should include:
+
+- strategic judge — Temporistics primary
+- operational judge — Psychosophy primary
+- tactical judge — Socionics primary
+- social context / structural attribution judge
+- cognitive-affective moderator judge
+- skeptic / safety judge
 
 **Step 11. Explanation Synthesis**
 Human-readable explanation is assembled.
@@ -508,6 +566,8 @@ Model, weights, scenarios, twin-building are improved on real outcome data.
 I would not make one score "87/100".
 That's too fake.
 
+Important: the aggregation formula is **provisional**. The current project position is that level scoring should follow [[compatibility-level-boundaries]], while final weighting and aggregation must be empirically calibrated through [[weight-calibration]].
+
 Need at least 5 numbers:
 
 1. strategic alignment
@@ -516,20 +576,38 @@ Need at least 5 numbers:
 4. risk severity
 5. confidence / evidence sufficiency
 
-**Final logic should be:**
+**Current staged logic should be:**
 
 ```
-final_match_score =
-  0.40 * strategic_alignment
-  * 0.30 * operational_complementarity
-  * 0.20 * tactical_stability
-  * 0.10 * reciprocal_interest_prior
-  - risk_penalty
+strategic_alignment       = score from Temporistics
+operational_fit           = score from Psychosophy
+tactical_interaction_fit  = score from Socionics
+
+secondary_context = {
+  sociology_moderators,
+  cognitive_affective_moderators,
+  contradiction_flags,
+  evidence_confidence
+}
+
+final_match_score = calibrated_aggregation(
+  strategic_alignment,
+  operational_fit,
+  tactical_interaction_fit,
+  reciprocal_interest_prior,
+  risk_penalty,
+  secondary_context
+)
 ```
+
+Do **not** hard-code the weights as a final doctrine until real-world outcome calibration exists. Earlier weights like `0.40 / 0.30 / 0.20 / 0.10` are placeholders, not project law.
 
 But separately required:
 - confidence_score
 - hard_stop_flags
+- contradiction_flags between levels
+- structural_context_flags
+- stress/fatigue/moderator flags
 
 **Example hard stop:**
 - Contradiction on children
@@ -545,7 +623,7 @@ High "chemistry" should not override hard incompatibility.
 
 This is where things most often break.
 
-To make simulation not be beautiful chatter, 7 rules are needed:
+To make simulation not be beautiful chatter, these rules are needed:
 
 1. **Structured world state** — Scenario must have world state: income, deadline, constraints, relatives, health, time, solution options.
 
@@ -560,6 +638,12 @@ To make simulation not be beautiful chatter, 7 rules are needed:
 6. **Counterfactual probes** — Need to run "what if conditions are worse," "what if one has fewer resources."
 
 7. **Anti-pleasing constraints** — Agents should not artificially smooth conflict for a beautiful result.
+
+8. **Social realism constraints** — Scenarios should include structural context when relevant: class/status mismatch, housing, shift work, migration, military service, family obligations, care load, gender-role expectations, income volatility, or institutional pressure. See [[sociological-compatibility-analogues]].
+
+9. **Cognitive-affective moderators** — Scenarios should vary fatigue, sleep debt, time pressure, ambiguity, perceived criticism, emotional escalation, repair opportunity, and perspective-taking demand. See [[neuroscience-compatibility-bridges]].
+
+10. **Observable markers only** — Judges should score observable repair, escalation, withdrawal/re-entry, turn-taking, perspective-taking accuracy, and decision ownership. They should not infer hidden neural causes.
 
 ---
 
@@ -580,10 +664,14 @@ Don't do immediately:
 ```
 MVP-1:
 - Deep onboarding
+- SocialContextProfile v1
 - Candidate intake from curated consent-based pool
 - Twin builder
 - 5–7 scenarios
+- at least 2 sociology-informed scenarios
+- stress/fatigue/repair moderators in scenarios
 - Judge ensemble
+- structural context review
 - Manual human review
 - 1–3 recommendations per week
 - Feedback collection after date
@@ -595,6 +683,15 @@ Not "make people say wow," but verify 3 things:
 1. Is such explanation actually useful to the user?
 2. Is shortlist really better than random or ordinary choice?
 3. Do simulation outputs correlate with reality at all?
+
+MVP should explicitly separate explanation labels:
+
+- personal preference
+- interaction pattern
+- typology-level hypothesis
+- structural constraint
+- stress/fatigue state effect
+- unknown / needs real-world validation
 
 ---
 
@@ -609,12 +706,19 @@ Not "make people say wow," but verify 3 things:
 - Define sensitive domains
 - Fix legal boundaries
 - Make data contracts
-- Decide which typologies are optional and which are not used in core at all
+- Define compatibility boundary rules: Strategic/Temporistics, Operational/Psychosophy, Tactical/Socionics
+- Define which secondary layers are allowed only as context: sociology and neuroscience
+- Define typology code and localization policy
+- Mark scoring aggregation as provisional until calibration
 
 **Artifacts:**
 - PRD
 - Risk register
 - Ontology of compatibility
+- Typology boundary policy
+- Social context profile schema
+- Cognitive-affective moderator schema
+- Code/terminology convention
 - Scenario taxonomy
 - Data schema draft
 - Evaluation plan v1
@@ -921,6 +1025,17 @@ Only then can a human be removed from part of steps.
 - Conversation designer
 - Safety evaluator
 - QA for prompts and workflows
+- Sociology researcher / social-science advisor
+- Neuroscience or cognitive-science advisor
+- Ontology / taxonomy steward for typology codes, role families, and crosswalks
+- Career / labor-market taxonomy specialist if civilian and military role-fit remain in scope
+
+The current research team should distinguish:
+
+- typology experts — internal compatibility hypotheses
+- sociology expert — social context and structural moderators
+- neuroscience expert — process analogies and validation-task design
+- role taxonomy experts — ESCO/O*NET/ISCO, civilian role families, and military role families
 
 ---
 
@@ -966,6 +1081,10 @@ Get 5–10 test cases end-to-end.
 - Would not make black-box final score without evidence
 - Would not dive immediately into large dating marketplace
 - Would not believe the first beautiful demo
+- Would not translate constructs directly across systems, e.g. `1E = Fe` or `Future = Ni`
+- Would not use sociology to label types or treat class/gender/institution as personality
+- Would not use neuroscience language to imply brain-type localization
+- Would not present unofficial groupings such as Psychosophy sextas/quadras as original canonical doctrine
 
 ---
 
@@ -981,6 +1100,27 @@ But practically:
 
 Otherwise it's just an interesting intellectual toy.
 
+Current broader product formula:
+
+```text
+Core engine = evidence-based simulation of joint behavior under constraint
+
+Primary compatibility lenses:
+  Strategic   -> Temporistics
+  Operational -> Psychosophy
+  Tactical    -> Socionics
+
+External context layers:
+  Sociology    -> structural moderators and scenario realism
+  Neuroscience -> cognitive-affective mechanism analogies and validation tasks
+
+Downstream applications:
+  dating compatibility
+  composite profile explanation
+  civilian career role-fit
+  military role-family advising
+```
+
 ---
 
 ## 22. Recommended First Architecture Version
@@ -991,13 +1131,24 @@ Most sane v1:
 Orchestrator
 → Onboarding Interview Agent
 → Evidence Normalizer
-→ Typology Mapping Agent
+→ Level-Specific Typology Mapping
+  → Strategic / Temporistics
+  → Operational / Psychosophy
+  → Tactical / Socionics
+→ Social Context Profiler
+→ Cognitive-Affective Moderator Profiler
 → Twin Builder
 → Candidate Intake Agent
 → Scenario Planner
 → Simulation Director
 → Twin A / Twin B
 → Judge Ensemble
+  → Strategic Judge
+  → Operational Judge
+  → Tactical Judge
+  → Structural Context Judge
+  → Cognitive-Affective Moderator Judge
+  → Skeptic / Safety Judge
 → Explanation Composer
 → Human Reviewer
 → Weekly Digest
@@ -1015,6 +1166,13 @@ Idea is strong, but real value of the project is not in "typologies + agents," b
 1. Good compatibility ontology
 2. High-quality high-stakes scenarios
 3. Strict validation against real-world outcomes
+
+After the 2026-04-24 methodology update, the ontology must also maintain hard boundaries:
+
+- typologies are primary only within their own compatibility level
+- sociology and neuroscience are external context/validation layers, not type systems
+- scoring weights are provisional until calibrated
+- user-facing explanations must separate typology, social structure, state effects, and unknowns
 
 If done weakly, you get a pseudoscientific dating oracle.
 If done strongly, you might get a new class of agentic matchmaking systems.
